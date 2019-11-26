@@ -22,6 +22,6 @@ jobs:
         git merge upstream/master
         git branch -a
         git add --all
-        git commit -m "init files skeleton"
+        git commit -m "sync with upstream"
         git push origin master
         git remote -v
