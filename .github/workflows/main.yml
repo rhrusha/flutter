@@ -1,0 +1,27 @@
+name: sync_with_upstream
+
+on:
+  schedule:
+    - cron:  '*/5 * * * *'
+
+jobs:
+  sync:
+    name: Syn with upstream repository
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Syncing...
+      env:
+        UPSTREAM_URL: https://github.com/flutter/flutter.git 
+      run: |
+        git remote -v
+        git remote add upstream $UPSTREAM_URL
+        git remote -v
+        git fetch upstream
+        git checkout origin/master
+        git merge upstream/master
+        git branch -a
+        git add --all
+        git commit -m "merge master from upstream"
+        git push origin master
+        git remote -v
