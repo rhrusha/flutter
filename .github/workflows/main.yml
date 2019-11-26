@@ -2,7 +2,7 @@ name: sync_with_upstream
 
 on:
   schedule:
-    - cron:  '*/5 * * * *'
+    - cron:  '24 0 * * *'
 
 jobs:
   sync:
